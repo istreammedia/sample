@@ -71,8 +71,8 @@ public class AdjustmentWritePlatformServiceJpaRepositoryImpl implements
 				clientBalance = updateClientBalance.createAdjustmentClientBalance(command, clientBalance);
 			}
 
-			updateClientBalance.saveClientBalanceEntity(clientBalance);
-
+			//updateClientBalance.saveClientBalanceEntity(clientBalance);
+             updateClientBalance.saveClientBalanceEntity(clientBalance);
 			this.adjustmentRepository.saveAndFlush(adjustment);
 			transactionHistoryWritePlatformService.saveTransactionHistory(adjustment.getClient_id(), "Adjustment", adjustment.getAdjustment_date(),"AmountPaid:"+adjustment.getAmount_paid(),"AdjustmentType:"+adjustment.getAdjustment_type(),"AdjustmentCode:"+adjustment.getAdjustment_code(),"Remarks:"+adjustment.getRemarks(),"AdjustmentID:"+adjustment.getId());
 			return adjustment.getId();
